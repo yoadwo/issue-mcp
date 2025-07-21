@@ -32,10 +32,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.ai</groupId>-->
-<!--			<artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>-->
-<!--		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.ai/spring-ai-mcp-server-spring-boot-starter -->
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-starter-mcp-server</artifactId>
+<!--			<version>1.0.0-M6</version>-->
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.atlassian.jira/jira-rest-java-client-api -->
 		<dependency>
@@ -47,21 +49,6 @@
 			<groupId>com.atlassian.jira</groupId>
 			<artifactId>jira-rest-java-client-core</artifactId>
 			<version>${jira-rest-java-client.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.atlassian.adf</groupId>
-			<artifactId>adf-builder-java</artifactId>
-			<version>${adf-builder-java.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.atlassian.adf</groupId>
-			<artifactId>adf-builder-java-jackson2</artifactId>
-			<version>${adf-builder-java.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.atlassian.adf</groupId>
-			<artifactId>adf-builder-java-markdown</artifactId>
-			<version>${adf-builder-java.version}</version>
 		</dependency>
 <!--		 https://mvnrepository.com/artifact/io.atlassian.fugue/fugue-->
 		<dependency>
@@ -77,11 +64,11 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.atlassian.util.concurrent/atlassian-util-concurrent -->
-		<dependency>
-			<groupId>io.atlassian.util.concurrent</groupId>
-			<artifactId>atlassian-util-concurrent</artifactId>
-			<version>${atlassian-util-concurrent.version}</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.atlassian.util.concurrent</groupId>-->
+<!--			<artifactId>atlassian-util-concurrent</artifactId>-->
+<!--			<version>${atlassian-util-concurrent.version}</version>-->
+<!--		</dependency>-->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

@@ -10,6 +10,7 @@ import com.jf.yoad.sandbox.issuemcp.models.IssueTypes;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
@@ -88,6 +89,10 @@ public class JiraIssueService {
      * codeblock2{noformat}
      * single ticket {{text}}
      */
+    @Tool(name = "create_jira_issue", description = """
+    Creates a Jira issue in the specified project with a summary (title), and description.
+    The description will include a free text and the highlighted code block (from the user).
+    """)
     public BasicIssue createIssue(String projectKey, String summary,
                                   String freeText, String codeblock) {
         if (restClient == null) {
