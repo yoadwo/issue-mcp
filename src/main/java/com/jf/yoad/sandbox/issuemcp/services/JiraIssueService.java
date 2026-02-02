@@ -40,7 +40,7 @@ public class JiraIssueService {
             this.restClient = new AsynchronousJiraRestClientFactory()
                     .createWithBasicHttpAuthentication(jiraUri, jiraUsername, jiraPassword);
             log.info("JiraRestClient initialized successfully.");
-        } catch (URISyntaxException e) {
+        } catch (Exception e) {
             log.error("Invalid Jira Server URL: {}", jiraServerUrl, e);
             throw e;
         }
@@ -56,6 +56,29 @@ public class JiraIssueService {
                 log.error("Error closing JiraRestClient: {}", e.getMessage(), e);
             }
         }
+    }
+
+    /**
+     * Get a Jira issue's summary (title) and description.
+     */
+    @Tool(name = "get_jira_issue_details", description = """
+    Retrieves a Jira issue's summary (title) and description by its issue key (e.g., "PROJ-123").
+    Returns a formatted string with the issue key, summary, and description.
+    """)
+    public String getIssueDetails(String issueKey) {
+        Issue issue = getIssueById(issueKey);
+        if (issue == null) {
+            return "Issue not found or error occurred while retrieving issue: " + issueKey;
+        }
+
+        StringBuilder result = new StringBuilder();
+        result.append("Issue Key: ").append(issue.getKey()).append("\n");
+        result.append("Summary: ").append(issue.getSummary()).append("\n");
+        result.append("Description: ").append(
+            issue.getDescription() != null ? issue.getDescription() : "(No description)"
+        ).append("\n");
+
+        return result.toString();
     }
 
     /**
@@ -84,7 +107,6 @@ public class JiraIssueService {
     /**
      * Create a jira issue.
      * Description markdown example:
-     *
      *  {noformat}codeblock1
      * codeblock2{noformat}
      * single ticket {{text}}
